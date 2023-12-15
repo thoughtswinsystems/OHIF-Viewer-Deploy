@@ -1,0 +1,21 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: ohif-app-deployment
+  labels:
+    app: ohif-app
+spec:
+  replicas: 3
+  selector:
+    matchLabels:
+      app: ohif-app
+  template:
+    metadata:
+      labels:
+        app: ohif-app
+    spec:
+      containers:
+      - name: ohif-app
+        image: ohif/viewer:latest
+        ports:
+        - containerPort: 80
